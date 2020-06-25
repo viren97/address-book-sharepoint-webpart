@@ -1,0 +1,425 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.addressBook {
+  @include ms-Grid;
+  width: 100%;
+  @mixin description() {
+    padding-top: 5px;
+    opacity: 1;
+    font-size: 19px;
+    display: flex;
+    top: 0;
+    position: relative;
+    transition: all ease-in .4s;
+    box-sizing: content-box;
+    overflow: visible;
+    &>button {
+      opacity: 1;
+    }
+  }
+  .error {
+    @include description();
+    background: #f20707;
+    color: white;
+    justify-content: space-between;
+    height: 29px;
+    padding: 5px 10px;
+  }
+  .noDisplay {
+    opacity: 0;
+    position: relative;
+    top: 50px;
+    transition: all linear 2s;
+    &>button {
+      opacity: 0;
+    }
+  }
+  .success {
+    background: rgb(134, 221, 52);
+    color: white;
+    justify-content: space-between;
+    height: 29px;
+    padding: 5px 10px;
+    display: flex;
+    @include description();
+  }
+}
+
+.buttonOK {
+  width: 50px;
+  height: 30px;
+  padding: 3px;
+  background: honeydew;
+  color: black;
+}
+
+.header {
+  @include ms-Grid-row;
+  background-color: deepskyblue;
+  height: 60px;
+  width: 100%;
+  font-size: 40px;
+  margin: 0;
+  color: white;
+  padding-left: 20px;
+  padding-top: 8px;
+}
+
+.nav {
+  @include ms-Grid-row;
+  width: 100%;
+  font-size: 22px;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    font-weight: normal;
+  }
+  .home {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md2;
+    text-align: center;
+  }
+  .add {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md9;
+    height: inherit;
+  }
+  .blogImage {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md1;
+    img {
+      width: 40px;
+      height: inherit;
+    }
+  }
+}
+
+@mixin mt10 {
+  margin-top: 10px;
+}
+
+.content {
+  @include ms-Grid;
+  .contactList {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md5;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: block;
+      a {
+        display: block;
+        text-decoration: none;
+        border: 1px solid #d2c5c5;
+        span {
+          display: block;
+          font-size: 14px;
+          color: black;
+        }
+      }
+      .active {
+        background-color: #a7d4f2;
+      }
+      &:nth-of-type(even) {
+        a {
+          border-top: none;
+        }
+      }
+      &:nth-of-type(odd):not(:first-child) {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.formContainer {
+  @include ms-Grid-col;
+  @include ms-sm12;
+  @include ms-md7;
+  .formContent {
+    @include ms-Grid;
+    @mixin inputField {
+      input {
+        width: 100%;
+        outline: none;
+        height: 30px;
+        padding-left: 10px;
+        font-size: 22px;
+      }
+      .incorrect:not(:empty) {
+        margin-left: 5px;
+        font-size: 14px;
+        color: red;
+      }
+    }
+    @mixin paragraph {
+      p {
+        font-size: 20px;
+      }
+    }
+    .name {
+      @include ms-Grid-row;
+      @include mt10();
+      @include inputField();
+      @include paragraph();
+    }
+    .email {
+      @include ms-Grid-row;
+      margin-top: 10px;
+      @include mt10();
+      @include inputField();
+      @include paragraph();
+    }
+    .mobile {
+      @include ms-Grid-row;
+      @include mt10();
+      @include inputField();
+      @include paragraph();
+    }
+    .website {
+      @include ms-Grid-row;
+      @include mt10();
+      @include inputField();
+      @include paragraph();
+    }
+    .address {
+      @include ms-Grid-row;
+      @include mt10();
+      @include paragraph();
+      &>textarea {
+        width: 100%;
+        padding-left: 10px;
+        font-size: 22px;
+      }
+    }
+  }
+  @mixin button {
+    width: 100%;
+    color: white;
+    height: 37px;
+    border: 0;
+    outline: none;
+    font-size: 22px;
+  }
+  .profileContainer {
+    @include ms-Grid-row;
+    @include mt10();
+    .profileContent {
+      @include ms-Grid-col;
+      @include ms-sm8;
+      @include ms-Grid;
+      @include ms-Grid-row;
+      .profileImage {
+        @include ms-Grid-col;
+        @include ms-sm6;
+        position: relative;
+        padding-top: 70px;
+        height: 0;
+        border: 1px solid #d2c5c5;
+        img {
+          position: absolute;
+          display: block;
+          overflow: hidden;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .fileSelectorButton {
+        @include ms-Grid-col;
+        @include ms-sm6;
+        input {
+          height: 0px;
+          width: 0px;
+          opacity: 0;
+        }
+        label::before {
+          content: "\F311";
+          font-family: "FabricMDL2Icons";
+          color: black;
+          font-weight: bold;
+          font-size: 30px;
+          padding-left: 28px;
+          display: block;
+        }
+        label {
+          width: 100%;
+          display: block;
+          height: 40px;
+          font-weight: bold;
+          cursor: grab;
+          padding-top: 10px;
+        }
+        label:hover::before {
+          position: relative;
+          bottom: 10px;
+          transition: position ease-in 1s;
+        }
+      }
+    }
+    .uploadArea {
+      @include ms-Grid-col;
+      @include ms-sm4;
+      height: inherit;
+      padding-top: 18px;
+      input {
+        opacity: 0;
+        height: 0px;
+      }
+      label::before {
+        content: "\EE68";
+        text-align: center;
+        font-family: "FabricMDL2Icons";
+        font-weight: bold;
+        display: block;
+        position: absolute;
+        width: 100%;
+        right: 1px;
+        height: 32px;
+        padding-top: 7px;
+        box-sizing: border-box;
+        transition: all ease-in .3s;
+        bottom: 50px;
+      }
+      label {
+        background: #737373;
+        color: white;
+        display: block;
+        padding: 6px;
+        font-size: 16px;
+        width: 100px;
+        text-align: center;
+        position: relative;
+      }
+      label:hover {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+      }
+      label:hover::before {
+        bottom: 0px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        background: #cccccc;
+        color: black;
+        right: 0px;
+      }
+      .showLoading {
+        opacity: 1;
+        img {
+          height: 26px;
+        }
+        transition: all ease-in .6s;
+      }
+      .noLoading {
+        opacity: 0;
+        transition: all ease-out .6s;
+        img {
+          height: 26px;
+        }
+      }
+    }
+  }
+  .event {
+    @include ms-Grid-row;
+    @include mt10();
+    button {
+      @include ms-Grid-col;
+      @include ms-sm12;
+      @include button();
+      background-color: forestgreen;
+    }
+    .updateContainer {
+      @include ms-Grid-col;
+      @include ms-sm12;
+      button {
+        @include button();
+        width: 40%;
+        background-color: forestgreen;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.displayContainer {
+  @include ms-Grid-col;
+  @include ms-sm12;
+  @include ms-md7;
+  .infoTable {
+    @include ms-Grid-row;
+    @include ms-Grid-col;
+    @include ms-sm12;
+    color: dimgray;
+    .fixedField {
+      width: 78px;
+      text-align: center;
+      font-size: 22px;
+      &+td {
+        font-size: 18px;
+        font-weight: bolder;
+        text-align: center;
+      }
+    }
+    .fixedName {
+      width: 127px;
+    }
+    .fixedImage {
+      padding-top: 100px;
+      box-sizing: border-box;
+      position: relative;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  @mixin image() {
+    img {
+      width: 20px;
+      height: 22px;
+      vertical-align: -4px;
+    }
+  }
+  button {
+    display: inline-block;
+    border: 0;
+    background: white;
+    padding-left: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .manipulateSection {
+    @include ms-Grid-row;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .editSection {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md3;
+    @include image();
+    width: 100px;
+  }
+  .deleteSection {
+    @include ms-Grid-col;
+    @include ms-sm12;
+    @include ms-md3;
+    @include image();
+    width: 100px;
+  }
+}
