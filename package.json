@@ -42,7 +42,7 @@
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "gulp": "~3.9.1",
     "react-inversify": "^2.0.1",
     "react-router": "^5.2.0",
